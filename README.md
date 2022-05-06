@@ -1,2 +1,2 @@
 # aulas
-Aulas que fiz
+Aulas/exercícios de programação que fiz
