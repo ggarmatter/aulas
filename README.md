@@ -7,3 +7,4 @@ Aulas/exercícios de programação que fiz
 * pandas
 * numpy
 * matplotlib
+* scikit-learn
