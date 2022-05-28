@@ -103,7 +103,7 @@ rm(list = ls())
 
 vetor = c(54, 0, 17, 94, 12.5, 2, 0.9, 15)
 vetor + c(5, 6)
-vetor + c(5, 6, 7)
+vetor + c(5, 6, 7) # da erro pq nao é divisivel
 
 objeto = c(rep("a", 15), rep("b", 12), rep("c", 8))
 objeto
@@ -112,13 +112,15 @@ objeto == "b"
 
 sum((objeto == "b")) # conta quantidade de b
 
+set.seed(1)
 objeto = runif(100, 0, 1)
 objeto
 
 objeto >= 0.5
 sum(objeto >= 0.5)
+objeto[objeto>= 0.5] # filtro igual pandas
 
-potencias = c(1:50)
+potencias = c(1:50) # ou potencias = 1:50
 potencias
 
 2^potencias # calcula as 50 primeiras potencias de 2
@@ -141,4 +143,49 @@ tan(sequencia) == (sin(sequencia)/cos(sequencia)) # quais sao iguais
 max(abs(tan(sequencia)- (sin(sequencia)/cos(sequencia)))) # maior diferenca
 #imprime o numero sem notacao cientifica
 format(max(abs(tan(sequencia)- (sin(sequencia)/cos(sequencia)))), scientific = FALSE)
-  
+
+vetor = 1:10
+dim(vetor) = c(2,5)
+vetor # vetor virou matriz
+
+dataframe = data.frame(nome = c("joão", "maria", "mariana"),
+                       sexo = c("M", "F", "F"),
+                       idade = c(60, 61, 26))
+dataframe
+
+cont = c(8, 4 ,NA, 9, 6, 1, 7, 9)               
+cont[2]
+cont[-2] # pega todos menos o na segunda posição
+cont[c(2,4)]
+cont[2:4]
+cont[is.na(cont)]
+cont[cont > 6] # pega tudo maior que 6, NA vem junto por algum motivo
+cont[cont > 6 & !is.na(cont)]
+which(cont > 6) # posicoes dos numeros maiores que 6
+
+names(cont)
+
+names(cont) = letters[1:length(cont)]
+cont
+cont["b"]
+
+sum(cont) # da NA pq tem NA no vetor
+sum(cont, na.rm=TRUE)
+
+cont[is.na(cont)] = 99
+cont
+
+mat = matrix(1:9, nrow=3)
+mat
+
+mat[3,] # terceira linha
+mat[,3] # terceira coluna
+mat[,3, drop = FALSE] # nao remove a dimensao
+
+colnames(mat) = letters[1:length(mat[,3])] #da nomes pra colunas
+mat
+
+rownames(mat) = LETTERS[1:length(mat[1,])] # da nome pras linhas
+mat
+
+mat["A","c"]
