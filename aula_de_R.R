@@ -57,3 +57,6 @@ dados = function(x){
 }
 dados(20)
 dados("teste")
+
+summary(iris) # sumario de um onjunto de dados
+methods(summary) # metodos de summary
