@@ -60,3 +60,12 @@ dados("teste")
 
 summary(iris) # sumario de um onjunto de dados
 methods(summary) # metodos de summary
+
+x = 32 + 16^2 - 25^3
+y = x/345
+rm(y) # tira a variavel y da memoria
+rm(list=ls()) # tira tudo da memoria
+
+help.search("poisson") # procura que funcao faz poisson
+x = rpois(100, 5) # cria uma distribuição de poisson com centro em 5
+hist(x)
