@@ -8,3 +8,4 @@ Aulas/exercícios de programação que fiz
 * numpy
 * matplotlib
 * scikit-learn
+* R
