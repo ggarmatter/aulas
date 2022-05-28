@@ -69,3 +69,76 @@ rm(list=ls()) # tira tudo da memoria
 help.search("poisson") # procura que funcao faz poisson
 x = rpois(100, 5) # cria uma distribuição de poisson com centro em 5
 hist(x)
+
+vetor = c(1, 2, 3, 4, 5)
+
+x = runif(10)
+x
+typeof(x)
+as.integer(x) # muda pra int, mas ele não arredonda
+round(x, 3) # arredonda
+
+x = 0.3 + 0.6 - 0.9
+x == 0 # erro de ponto flutuante
+
+all.equal(x, 0) # pra comparar ponto flutuante por causa do erro
+
+w = c(5L, "a")
+w # transforma tudo em caracter se tiver caracter no vetor
+
+y = c(TRUE, 2)
+y # TRUE é transformado em 1, false em 0
+
+z = c(TRUE, FALSE)
+z # aqui o type é bool
+
+vetor = c(1 , 2, NA, 6)
+vetor
+
+is.na(vetor) # testa pra todos os elementos se é NA
+
+any(is.na(vetor)) # Ve se algum elemento do vetor é NA
+
+rm(list = ls())
+
+vetor = c(54, 0, 17, 94, 12.5, 2, 0.9, 15)
+vetor + c(5, 6)
+vetor + c(5, 6, 7)
+
+objeto = c(rep("a", 15), rep("b", 12), rep("c", 8))
+objeto
+
+objeto == "b"
+
+sum((objeto == "b")) # conta quantidade de b
+
+objeto = runif(100, 0, 1)
+objeto
+
+objeto >= 0.5
+sum(objeto >= 0.5)
+
+potencias = c(1:50)
+potencias
+
+2^potencias # calcula as 50 primeiras potencias de 2
+
+potencias^2 # calcula quadrado dos numeros de 1 a 50
+
+2^potencias == potencias^2
+sum(2^potencias == potencias^2)
+
+sequencia = seq(from =1, to= 2*pi, by= 0.1)
+sin(sequencia)
+cos(sequencia)
+tan(sequencia)
+
+sin(sequencia)/cos(sequencia) #tangente
+# diferenca entre os dois metodos de calculo da tangente
+tan(sequencia)- (sin(sequencia)/cos(sequencia)) 
+tan(sequencia) == (sin(sequencia)/cos(sequencia)) # quais sao iguais
+
+max(abs(tan(sequencia)- (sin(sequencia)/cos(sequencia)))) # maior diferenca
+#imprime o numero sem notacao cientifica
+format(max(abs(tan(sequencia)- (sin(sequencia)/cos(sequencia)))), scientific = FALSE)
+  
