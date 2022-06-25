@@ -39,16 +39,29 @@ perda = function(par, y, dia){
 perda(c(25, 1/130, 600), dados1$CUMINSCRITOS, dados1$DIAS)
 
 
-resultado = optim(par = c(21, 0.005, 1000), fn = perda, 
-             y =dados1$CUMINSCRITOS, dia = dados1$DIAS, method = "Nelder-Mead")
+resultado = optim(par = c(26, 0.007, 1000), fn = perda, 
+             y =dados1$CUMINSCRITOS, dia = dados1$DIAS)
 print(round(resultado$par,5))
 
+resultado2 = optim(par = c(10, 0.008, 600), fn = perda, 
+                  y =dados2$CUMINSCRITOS, dia = dados2$DIAS)
+print(round(resultado2$par,5))
+
+
+len1 = length(dados1$DIAS)+365
+len2 = length(dados2$DIAS)+365
 
 #plota os dados originais e resultado
 par(mfrow = c(1,2), mar=c(2.6, 3, 1.2, 0.5), mgp = c(1.6, 0.6, 0))
-plot(dados1$CUMINSCRITOS ~ dados1$DIAS, xlim = c(0, 1215), ylim = c(0, 25),
+plot(dados1$CUMINSCRITOS ~ dados1$DIAS, xlim = c(0, length(dados1$DIAS)+365), ylim = c(0, 25),
      ylab = "Número de inscritos*100000", main = "Canal 1",
      xlab = "Dias", type = "o", cex = 0.1)
 abline(v = 850)
-lines(f_log(1:1215, resultado$par[1], resultado$par[2], resultado$par[3]),
+lines(f_log(1:len1, resultado$par[1], resultado$par[2], resultado$par[3]),
+      col = "red")
+# plota os dados originais e o resultado para o canal 2
+plot(dados2$CUMINSCRITOS ~ dados2$DIAS, ylab = "Número de inscritos*100000", main = "Canal 2", 
+     xlab = "Dias", ylim = c(0, 50), xlim = c(0, 972), type = "p", cex = 0.1)
+abline(v = 607)
+lines(f_log(1:len2, resultado2$par[1], resultado2$par[2], resultado2$par[3]),
       col = "red")
