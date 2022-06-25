@@ -39,13 +39,13 @@ perda = function(par, y, dia){
 perda(c(25, 1/130, 600), dados1$CUMINSCRITOS, dados1$DIAS)
 
 
-resultado = optim(par = c(26, 0.007, 1000), fn = perda, 
+resultado = optim(par = c(50, 0.008, 1100), fn = perda, 
              y =dados1$CUMINSCRITOS, dia = dados1$DIAS)
-print(round(resultado$par,5))
+#print(round(resultado$par,5))
 
 resultado2 = optim(par = c(10, 0.008, 600), fn = perda, 
                   y =dados2$CUMINSCRITOS, dia = dados2$DIAS)
-print(round(resultado2$par,5))
+#print(round(resultado2$par,5))
 
 
 len1 = length(dados1$DIAS)+365
@@ -65,3 +65,8 @@ plot(dados2$CUMINSCRITOS ~ dados2$DIAS, ylab = "Número de inscritos*100000", ma
 abline(v = 607)
 lines(f_log(1:len2, resultado2$par[1], resultado2$par[2], resultado2$par[3]),
       col = "red")
+resposta_trabalho1 = round(f_log(1:len1, resultado$par[1], resultado$par[2], resultado$par[3])[len1]*100000)
+resposta_trabalho2 = round(f_log(1:len2, resultado2$par[1], resultado2$par[2], resultado2$par[3])[len2]*100000)
+
+print(paste0("Numero de inscritos previsto para daqui 1 ano para o canal ",dados1[1,4],": " , resposta_trabalho1))
+print(paste0("Numero de inscritos previsto para daqui 1 ano para o canal ",dados2[1,4],": " , resposta_trabalho2))
